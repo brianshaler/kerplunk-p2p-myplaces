@@ -1,0 +1,50 @@
+{
+  "name": "kerplunk-p2p-myplaces",
+  "displayName": "My Places",
+  "description": "Share where you've been",
+  "version": "0.0.1",
+  "kerplunk": {
+    "dependencies": [
+      "kerplunk-p2p",
+      "kerplunk-location-history",
+      "kerplunk-place"
+    ],
+    "permissions": {
+      "kerplunk-activityitem": {
+        "models": [
+          "ActivityItem"
+        ]
+      },
+      "kerplunk-place": {
+        "models": [
+          "Place"
+        ]
+      }
+    }
+  },
+  "keywords": [
+    "kerplunk-plugin",
+    "kp:Social Networking",
+    "kp:p2p"
+  ],
+  "engines": {
+    "node": ">=0.10"
+  },
+  "main": "./lib/index.js",
+  "dependencies": {
+    "lodash": "^3.7.0",
+    "moment": "^2.10.6",
+    "react": "^0.13.2",
+    "when": "^3.7.3"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.1",
+    "glut": "0.0.1",
+    "glut-coffee-amdify": "0.0.0",
+    "gulp": "^3.8.8",
+    "gulp-coffee": "^2.3.1"
+  },
+  "scripts": {
+    "prepublish": "rm -rf ./lib ./public && gulp"
+  }
+}
