@@ -2,7 +2,7 @@
   "name": "kerplunk-p2p-myplaces",
   "displayName": "My Places",
   "description": "Share where you've been",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "kerplunk": {
     "dependencies": [
       "kerplunk-p2p",
