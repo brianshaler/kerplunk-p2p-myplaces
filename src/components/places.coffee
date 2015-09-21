@@ -36,11 +36,12 @@ module.exports = React.createFactory React.createClass
       lng: @props.location[0]
       lat: @props.location[1]
       radius: 200
-    url = '/admin/p2p/connect/testask.json'
+    url = '/admin/p2p/query/send.json'
     options =
       query: 'myPlaces'
       parameters: JSON.stringify parameters
       degrees: 2
+      reduction: 'tree'
       json: true
     @setState
       places: []
@@ -84,7 +85,8 @@ module.exports = React.createFactory React.createClass
             DOM.div
               key: "place-#{place._id}-#{item._id}"
             ,
-              DOM.strong null, item.identity.displayName
+              DOM.strong null,
+                item.identity.fullName ? item.identity.nickName
               ' '
               DOM.em null, moment(item.postedAt).fromNow()
-              (em null, " (via #{fof})" if fof.length > 0)
+              (DOM.em null, " (via #{fof})" if fof.length > 0)

@@ -34,9 +34,9 @@ module.exports = (System) ->
       return deferred.reject err if err
       return deferred.resolve data unless places?.length > 0
       placeIds = _.pluck places, '_id'
+      me = System.getMe()
       where =
-        identity:
-          '$in': myIds
+        identity: me._id
         'attributes.place':
           '$in': placeIds
       ActivityItem
@@ -45,7 +45,7 @@ module.exports = (System) ->
         postedAt: -1
       .populate 'identity'
       .find (err, items) ->
-        console.log 'nearby items', items?.length, where
+        # console.log 'nearby items', items?.length, where
         Promise.all _.map items, (item) ->
           if item.toObject
             item = item.toObject()
@@ -92,9 +92,10 @@ module.exports = (System) ->
           Places: '/admin/p2p/places'
 
   events:
-    ask:
-      myPlaces:
-        do: getMyPlaces
+    p2p:
+      query:
+        myPlaces:
+          do: getMyPlaces
 
   routes:
     admin:

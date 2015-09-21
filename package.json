@@ -6,6 +6,7 @@
   "kerplunk": {
     "dependencies": [
       "kerplunk-p2p",
+      "kerplunk-p2p-query",
       "kerplunk-location-history",
       "kerplunk-place"
     ],
