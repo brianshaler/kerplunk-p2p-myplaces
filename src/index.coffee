@@ -80,6 +80,9 @@ module.exports = (System) ->
     data = {}
     System.do 'me.location.last', {}
     .then (info) ->
+      unless info?.location?.length == 2
+        info =
+          location: [-111.94, 33.42]
       return next new Error 'no location?' unless info?.location?.length == 2
       data.location = info.location
       data.items = []
