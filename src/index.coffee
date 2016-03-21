@@ -33,7 +33,7 @@ module.exports = (System) ->
     .find (err, places) ->
       return deferred.reject err if err
       return deferred.resolve data unless places?.length > 0
-      placeIds = _.pluck places, '_id'
+      placeIds = _.map places, '_id'
       me = System.getMe()
       where =
         identity: me._id
@@ -70,7 +70,7 @@ module.exports = (System) ->
               place
             .filter (place) ->
               place.items?.length > 0
-            # .pluck 'name'
+            # .map 'name'
             .value()
           data.answer = places
           deferred.resolve data
